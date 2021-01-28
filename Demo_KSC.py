@@ -340,7 +340,7 @@ for (FLAG,curr_train_ratio) in [(5, 0.05)]:
     
     logger = get_logger('./Demo_KSC.log')
     epoch=1000
-    exp_num=10
+    exp_num=5
     best=[]
     output_file=[]
     threshold=0.001
@@ -383,7 +383,7 @@ for (FLAG,curr_train_ratio) in [(5, 0.05)]:
                     #print(loss.data)
                     #aa, countt=accuracy(output.data, labels.data, class_count+1)
                     #print(eep, aa, countt, aa/countt)
-                if eep%10==0:
+                if eep%50==0:
                     Output=[]
                     for Testbatch_idx, (Testinputs, Testtargets) in enumerate(testloader):#batch_idx是enumerate（）函数自带的索引，从0开始
                         #print(Testinputs.shape)
@@ -416,7 +416,7 @@ for (FLAG,curr_train_ratio) in [(5, 0.05)]:
                     Draw_Classification_Map(OutputWhole, './ResultImage/' + dataset_name + '_NL_' + str(train_ratio) + '_' + str(OA))
                 #if loss.data<=0.00005:
                     #break
-            logger.info('model {}  best_acc {:.7f} threshold={} \n\n\n'.format(model,best_acc,threshold,))
+            logger.info('model {}  best_acc {:.7f} threshold={} \n\n\n'.format(model,best_acc,threshold))
             best.append(best_acc)
             output_file.append(output_best)
 
